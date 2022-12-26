@@ -8,7 +8,9 @@ SRC		=	main.c/
 			time.c/
 			action_controller.c/
 			philo_do.c/
-			
+			take_fork/
+			destrot_thread/
+
 CC 		= gcc
 
 FLAGS	= -Wall -Wextra -Werror                                                          -Werror -pthread

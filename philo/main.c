@@ -1,6 +1,6 @@
 #include "philo.h"
 
-void	ft_check_args(void)
+static void ft_check_arg(void)
 {
 	printf("\x1b[35m _____________________________________ \x1b[0m \n");
 	printf("\x1b[35m|    Please enter 4 or 5 arguments    |\x1b[0m \n");
@@ -24,11 +24,11 @@ int main(int ac, char **av)
         ft_init_mutex(&arg);
         ft_init_philosophers(&arg);
         ft_init_threads(&arg);
-        ft_destroy_thread(&arg);
+        ft_finish_thread(&arg);
     }
     else if(ac < 5 || ac > 6)
     {
-        ft_check_args();
+        ft_check_arg();
         return(1);
     }
     return(0);
