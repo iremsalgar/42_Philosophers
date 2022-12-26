@@ -58,26 +58,26 @@ int ft_meal_controller(t_philosopher *philo)
 void *ft_philo_actions(void *arg)
 {
     t_philosopher *philo;
+    int loop;
 
+    loop = 1;
     philo = (t_philosopher *)arg;
-    philo->last_meal_time = ft_time();
-    philo->start_time = ft_time();
-    while(!philo->arg->dead) //1
-    {
-        if (philo->arg->dead || philo->stop || ft_meal_controller(philo))
+    if (philo->arg->nbr_philo == 1 && !ft_watch_philo(philo))
+	{
+        loop = 0;
+		if (pthread_mutex_lock(philo->left_fork))
 			return (NULL);
-		ft_take_fork(philo);
-		if (philo->arg->dead || philo->stop || ft_meal_controller(philo))
-			return (NULL);
-		ft_eat(philo);
-		if (philo->arg->dead || philo->stop || ft_meal_controller(philo))
-			return (NULL);
-		ft_sleep(philo);
-		if (philo->arg->dead || philo->stop || ft_meal_controller(philo))
-			return (NULL);
-		ft_think(philo);
-		if (philo->arg->dead || philo->stop || ft_meal_controller(philo))
-			return (NULL);
-    }
-    return(NULL);
+		printf("has taken a fork");
+		while (!ft_meal_controller(philo))
+            ;
+		pthread_mutex_unlock(philo->left_fork);
+	}
+	else
+		while (loop)
+        {
+            ft_eat(philo);
+            ft_sleep(philo);
+            ft_think(philo);
+        }
+	return (NULL);
 }

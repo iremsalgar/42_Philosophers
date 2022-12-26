@@ -62,14 +62,13 @@ void ft_init_threads(t_arg *arg, t_philosopher *philo)
 {
     int p_nbr;
     pthread_t   *threads;
-    pthread_t   main_thread;
 
     p_nbr = arg->nbr_philo;
     threads = malloc(sizeof(pthread_t) * p_nbr);
-    printf("%d\n",arg->nbr_philo);
     while(p_nbr--)
         pthread_create(&threads[p_nbr], NULL, ft_philo_actions, (void *)&philo);
-    pthread_create(&main_thread, NULL, ft_watch_philo, (void *)&philo);
-    pthread_join(main_thread, NULL);
+    p_nbr = arg->nbr_philo;
+    while(p_nbr--)
+        pthread_join(threads[p_nbr], NULL);
     arg->all_thread = threads;
 }
