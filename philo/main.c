@@ -25,6 +25,8 @@ int main(int ac, char **av)
         ft_init_philosophers(&arg);
         ft_init_threads(&arg);
         ft_finish_thread(&arg);
+        ft_unlock_and_destroy_mutex(&args);
+	    ft_free_all(&args);
     }
     else if(ac < 5 || ac > 6)
     {

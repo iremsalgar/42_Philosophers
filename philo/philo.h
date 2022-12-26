@@ -58,5 +58,8 @@ void	ft_usleep(int ms);
 void	ft_sleep(t_philosopher *philo);
 void	ft_think(t_philosopher *philo);
 void	ft_died(t_philosopher *philo, int i);
+void	ft_finish_thread(t_arg *args);
+void	ft_unlock_and_destroy_mutex(t_arg *arg);
+void	ft_free_all(t_arg *arg);
 
 #endif
