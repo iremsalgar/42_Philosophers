@@ -13,17 +13,17 @@ SRC		=	main.c\
 
 CC 		= gcc
 
-FLAGS	= -Wall -Wextra -Werror -pthread
+FLAGS	= -Wall -Wextra -Werror -pthread -g
 
 OBJS 	= $(SRC:.c=.o)
 
 $(NAME): $(OBJS)
-	$(CC) $(FLAGS) $(SRC) -o $(NAME)
+	$(CC) $(FLAGS) $(SRC) -o $(NAME) 
 
 all: $(NAME) $(OBJS) $(INC)
 
 %.o: %.c $(INC)
-		$(CC) $(FLAGS) -c $< -o $@
+		$(CC) $(FLAGS) -c $< -o  $@ 
 
 clean:
 	rm -rf $(OBJS)

@@ -44,10 +44,7 @@ void	ft_died(t_philosopher *philo, int i)
 	pthread_mutex_lock(&philo->print_lock);
     time = ft_time() - philo->start_time;
 	printf("%ld %d \x1b[31m died\x1b[0m \n", time, philo[i].id + 1);
-	i = -1;
+	i = 0;
 	while (i < philo[i].nbr_philo)
-	{
-		philo[i].stop = 1;
-		i++;
-	}
+		philo[i++].stop = 1;
 }

@@ -37,14 +37,14 @@ void ft_init_philosophers(t_arg *arg)
     t_philosopher   *philo;
 
     i = 0;
-    philo = malloc(sizeof(t_philosopher) * arg->nbr_philo);
+    philo = calloc(sizeof(t_philosopher), arg->nbr_philo);
     while(i < arg->nbr_philo)
     {
         philo[i].id = i;
         philo[i].time_to_die = arg->time_to_die;
         philo[i].time_to_eat = arg->time_to_eat;
         philo[i].time_to_sleep = arg->time_to_sleep;
-        philo[i].last_meal_time = ft_time();
+        philo[i].last_meal_time = 0;
         philo[i].nbr_philo = arg->nbr_philo;
         philo[i].stop = 0;
         philo[i].meals_allowed = 0;
@@ -58,7 +58,7 @@ void ft_init_philosophers(t_arg *arg)
     arg->all_philo = philo;
 }
 
-void ft_init_threads(t_arg *arg)
+void ft_init_threads(t_arg *arg, t_philosopher *philo)
 {
     int p_nbr;
     pthread_t   *threads;
@@ -66,9 +66,10 @@ void ft_init_threads(t_arg *arg)
 
     p_nbr = arg->nbr_philo;
     threads = malloc(sizeof(pthread_t) * p_nbr);
+    printf("%d\n",arg->nbr_philo);
     while(p_nbr--)
-        pthread_create(&threads[p_nbr], NULL, ft_philo_actions, (void *)&arg->all_philo);
-    pthread_create(&main_thread, NULL, ft_watch_philo, (void *)&arg->all_philo);
+        pthread_create(&threads[p_nbr], NULL, ft_philo_actions, (void *)&philo);
+    pthread_create(&main_thread, NULL, ft_watch_philo, (void *)&philo);
     pthread_join(main_thread, NULL);
     arg->all_thread = threads;
 }
