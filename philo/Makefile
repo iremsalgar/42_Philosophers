@@ -9,7 +9,7 @@ SRC		=	main.c/
 			action_controller.c/
 			philo_do.c/
 			take_fork/
-			destrot_thread/
+			destroy_thread
 
 CC 		= gcc
 
