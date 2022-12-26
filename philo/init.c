@@ -1,4 +1,4 @@
-#include "philo.c"
+#include "philo.h"
 
 int ft_init_arg(t_arg *arg, int ac, char **av)
 {
@@ -18,7 +18,7 @@ int ft_init_arg(t_arg *arg, int ac, char **av)
     return(0);
 }
 
-int ft_init_mutex(t_arg *arg)
+void ft_init_mutex(t_arg *arg)
 {
     int             philo_number;
     pthread_mutex_t *mutex;
@@ -31,7 +31,7 @@ int ft_init_mutex(t_arg *arg)
     arg->fork = mutex;
 }
 
-int ft_init_philosophers(t_arg *arg)
+void ft_init_philosophers(t_arg *arg)
 {
     int i;
     t_philosopher   *philo;
@@ -48,7 +48,7 @@ int ft_init_philosophers(t_arg *arg)
         philo[i].nbr_philo = arg->nbr_philo;
         philo[i].stop = 0;
         philo[i].meals_allowed = 0;
-        philo[i].meals_allowed_2 = arg->nbr_of_meals;
+        philo[i].meals_allowed_2 = arg->nbr_of_meal;
         philo[i].life_limit = arg->time_to_die;
         philo[i].left_fork = &arg->fork[philo[i].id];
         philo[i].right_fork = &arg->fork[(philo[i].id + 1) % arg->nbr_philo];
@@ -58,7 +58,7 @@ int ft_init_philosophers(t_arg *arg)
     arg->all_philo = philo;
 }
 
-int ft_init_threads(t_arg *arg)
+void ft_init_threads(t_arg *arg)
 {
     int p_nbr;
     pthread_t   *threads;
@@ -68,7 +68,7 @@ int ft_init_threads(t_arg *arg)
     threads = malloc(sizeof(pthread_t) * p_nbr);
     while(p_nbr--)
         pthread_create(&threads[p_nbr], NULL, ft_philo_actions, (void *)&arg->all_philo);
-    pthread_create(&main_thread, NULL, ft_watch_philo, (void *)&arg->all_pilo)
-    pthread_join(&main_thread, NULL)
-    arg->all_threads = threads;
+    pthread_create(&main_thread, NULL, ft_watch_philo, (void *)&arg->all_philo);
+    pthread_join(main_thread, NULL);
+    arg->all_thread = threads;
 }

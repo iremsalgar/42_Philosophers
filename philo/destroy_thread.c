@@ -37,8 +37,8 @@ Bu sayede, iş parçacıkları sonlandırılmış olur.
 void	ft_free_all(t_arg *arg)
 {
 	free(arg->all_thread);
-	free(arg->all_philos);
-	free(arg->forks);
+	free(arg->all_philo);
+	free(arg->fork);
 }
 
 void	ft_unlock_and_destroy_mutex(t_arg *arg)
@@ -51,6 +51,6 @@ void	ft_unlock_and_destroy_mutex(t_arg *arg)
 		pthread_mutex_unlock(&arg->fork[p_nbr]);
 		pthread_mutex_destroy(&arg->fork[p_nbr]);
 	}
-	pthread_mutex_unlock(&(*arg).lock_print);
-	pthread_mutex_destroy(&(*arg).lock_print);
+	pthread_mutex_unlock(&(*arg).print_lock);
+	pthread_mutex_destroy(&(*arg).print_lock);
 }

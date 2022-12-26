@@ -15,7 +15,7 @@ static void ft_check_arg(void)
 
 int main(int ac, char **av)
 {
-    t_arg   *arg;
+    t_arg   arg;
 
     if(ac == 5 || ac == 6)
     {

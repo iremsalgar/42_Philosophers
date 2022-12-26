@@ -7,7 +7,7 @@ void *ft_watch_philo(void *arg)
     int i;
     int loop;
 
-    philo = (t_philo *)args;
+    philo = (t_philosopher *)arg;
     i = 0;
     loop = 1;
     while (loop) 
@@ -18,7 +18,7 @@ void *ft_watch_philo(void *arg)
             if (time_now - philo[i].last_meal_time > philo[i].life_limit)
             {
                 ft_died(philo, i);
-                pthread_mutex_unlock(&philo->lock_print);
+                pthread_mutex_unlock(&philo->print_lock);
                 return NULL;
             }
         }
@@ -57,9 +57,9 @@ int ft_meal_controller(t_philosopher *philo)
 
 void *ft_philo_actions(void *arg)
 {
-    t_philosopher = *philo;
+    t_philosopher *philo;
 
-    philo = (t_philo *)arg;
+    philo = (t_philosopher *)arg;
     philo->last_meal_time = ft_time();
     philo->start_time = ft_time();
     while(!philo->arg->dead) //1

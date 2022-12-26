@@ -39,9 +39,10 @@ int ft_ac_av_controller(char **av)
 {
     size_t i;
 
+	i = 0;
     while(av[i])
     {
-        if(!ft_is_digit(argv[i]) || (!ft_atoi(av[i])))
+        if(!ft_is_digit(av[i]) || (!ft_atoi(av[i])))
         {
             printf("\x1b[31m wrong argument kido\x1b[0m \n");
             return(1);

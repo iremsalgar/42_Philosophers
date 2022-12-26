@@ -2,14 +2,14 @@ NAME = philo
 
 INC 	= philo.h
 
-SRC		=	main.c \
-			conroler.c \
-			init.c \
-			time.c \
-			action_controller.c \
-			philo_do.c \
-			take_fork \
-			destroy_thread \
+SRC		=	main.c\
+			controler.c\
+			init.c\
+			time.c\
+			action_controller.c\
+			philo_do.c\
+			take_fork.c\
+			destroy_thread.c\
 
 CC 		= gcc
 
