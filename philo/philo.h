@@ -52,5 +52,10 @@ long    ft_time(void);
 void    *ft_philo_actions(void *arg);
 int     ft_meal_controller(t_philosopher *philo);
 void    *ft_watch_philo(void *arg);
+void	ft_eat(t_philo *philo);
+void	ft_usleep(int ms);
+void	ft_sleep(t_philosopher *philo);
+void	ft_think(t_philosopher *philo);
+void	ft_died(t_philosopher *philo, int i);
 
 #endif

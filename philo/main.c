@@ -1,5 +1,18 @@
 #include "philo.h"
 
+void	ft_check_args(void)
+{
+	printf("\x1b[35m _____________________________________ \x1b[0m \n");
+	printf("\x1b[35m|    Please enter 4 or 5 arguments    |\x1b[0m \n");
+	printf("\x1b[35m|_____________________________________|\x1b[0m \n");
+	printf("\x1b[35m|     [1][Number of philosophers]     |\x1b[0m \n");
+	printf("\x1b[35m|     [2][Time to die]                |\x1b[0m \n");
+	printf("\x1b[35m|     [3][Time to eat]                |\x1b[0m \n");
+	printf("\x1b[35m|     [4][Time to sleep]              |\x1b[0m \n");
+	printf("\x1b[35m|     [5][Number of meals]            |\x1b[0m \n");
+	printf("\x1b[35m|_____________________________________|\x1b[0m \n");
+}
+
 int main(int ac, char **av)
 {
     if(ac == 5 || ac == 6)
@@ -11,5 +24,12 @@ int main(int ac, char **av)
         ft_init_mutex(&arg);
         ft_init_philosophers(&arg);
         ft_init_threads(&arg);
+        ft_destroy_thread(&arg);
     }
+    else if(ac < 5 || ac > 6)
+    {
+        ft_check_args();
+        return(1);
+    }
+    return(0);
 }

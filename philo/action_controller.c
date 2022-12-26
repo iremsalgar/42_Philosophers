@@ -33,6 +33,7 @@ int ft_meal_controller(t_philosopher *philo)
 {
     int i;
     int chk;
+
     if(philo->meals_allowed_2 > 0 && philo->meals_allowed >= philo->meals_allowed_2)
     {
         i = 0;

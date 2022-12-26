@@ -43,7 +43,7 @@ int ft_ac_av_controller(char **av)
     {
         if(!ft_is_digit(argv[i]) || (!ft_atoi(av[i])))
         {
-            printf("wrong argument kido\n");
+            printf("\x1b[31m wrong argument kido\x1b[0m \n");
             return(1);
         }
         i++;
