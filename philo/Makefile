@@ -5,7 +5,10 @@ INC 	= philo.h
 SRC		=	main.c/
 			conroler.c/
 			init.c/
-
+			time.c/
+			action_controller.c/
+			philo_do.c/
+			
 CC 		= gcc
 
 FLAGS	= -Wall -Wextra -Werror                                                          -Werror -pthread

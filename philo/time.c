@@ -1,8 +1,8 @@
 #include "philo.h"
 
-long ft_time(void)
+long	ft_time(void)
 {
-    struct timeval	tv;
+	struct timeval	tv;
 	long			result;
 
 	gettimeofday(&tv, NULL);

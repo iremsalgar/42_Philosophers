@@ -49,5 +49,8 @@ int     ft_init_mutex(t_arg *arg);
 int     ft_init_philosophers(t_arg *arg);
 int     ft_init_threads(t_arg *arg);
 long    ft_time(void);
+void    *ft_philo_actions(void *arg);
+int     ft_meal_controller(t_philosopher *philo);
+void    *ft_watch_philo(void *arg);
 
 #endif
