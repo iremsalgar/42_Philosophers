@@ -8,6 +8,8 @@
 #include<pthread.h>
 #include<string.h>
 
+struct s_philosopher;
+
 typedef struct s_arg
 {
 	int				nbr_philo;
@@ -17,7 +19,7 @@ typedef struct s_arg
     int             nbr_of_meals;
     pthread_mutex_t print_lock;
     pthread_mutex_t *fork;
-    t_philo			*all_philo;
+    t_philosopher	*all_philo;
     pthread_t       *all_thread;
 }   t_arg;
 
@@ -58,7 +60,7 @@ void	ft_usleep(int ms);
 void	ft_sleep(t_philosopher *philo);
 void	ft_think(t_philosopher *philo);
 void	ft_died(t_philosopher *philo, int i);
-void	ft_finish_thread(t_arg *args);
+void	ft_finish_thread(t_arg *arg);
 void	ft_unlock_and_destroy_mutex(t_arg *arg);
 void	ft_free_all(t_arg *arg);
 

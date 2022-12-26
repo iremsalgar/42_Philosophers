@@ -1,16 +1,16 @@
 #include "philo.h"
 
-void	ft_finish_thread(t_arg *args)
+void	ft_finish_thread(t_arg *arg)
 {
 	int	p_nbr;
 
-	p_nbr = args->nbr_philo;
+	p_nbr = arg->nbr_philo;
 	if (p_nbr == 1)
-		pthread_mutex_unlock(&args->fork[0]);
+		pthread_mutex_unlock(&arg->fork[0]);
 	while (p_nbr)
 	{
 	    p_nbr--;
-		pthread_join(args->all_thread[p_nbr], NULL);
+		pthread_join(arg->all_thread[p_nbr], NULL);
 	}
 }
 

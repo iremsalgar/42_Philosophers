@@ -2,18 +2,18 @@ NAME = philo
 
 INC 	= philo.h
 
-SRC		=	main.c/
-			conroler.c/
-			init.c/
-			time.c/
-			action_controller.c/
-			philo_do.c/
-			take_fork/
-			destroy_thread
+SRC		=	main.c \
+			conroler.c \
+			init.c \
+			time.c \
+			action_controller.c \
+			philo_do.c \
+			take_fork \
+			destroy_thread \
 
 CC 		= gcc
 
-FLAGS	= -Wall -Wextra -Werror                                                          -Werror -pthread
+FLAGS	= -Wall -Wextra -Werror -pthread
 
 OBJS 	= $(SRC:.c=.o)
 
