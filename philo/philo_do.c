@@ -10,9 +10,12 @@ void	ft_eat(t_philosopher *philo)
 	pthread_mutex_unlock(&philo->print_lock);
 	philo->meals_allowed += 1;
 	philo->last_meal_time = ft_time();
+	printf("*\n");
 	ft_usleep(philo->time_to_eat); //yemek yeme süresi bekleme yapılır
-	pthread_mutex_unlock(philo->left_fork);
-	pthread_mutex_unlock(philo->right_fork);
+	//pthread_mutex_unlock(philo->left_fork);
+	printf("1\n");
+	//pthread_mutex_unlock(philo->right_fork);
+	printf("b\n");
 }
 
 void	ft_sleep(t_philosopher *philo)

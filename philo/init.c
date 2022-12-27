@@ -37,14 +37,15 @@ void ft_init_philosophers(t_arg *arg)
     t_philosopher   *philo;
 
     i = 0;
-    philo = calloc(sizeof(t_philosopher), arg->nbr_philo);
+    philo = malloc(sizeof(t_philosopher) * arg->nbr_philo);
     while(i < arg->nbr_philo)
     {
         philo[i].id = i;
         philo[i].time_to_die = arg->time_to_die;
         philo[i].time_to_eat = arg->time_to_eat;
         philo[i].time_to_sleep = arg->time_to_sleep;
-        philo[i].last_meal_time = 0;
+        philo[i].last_meal_time = ft_time();
+        philo[i].start_time = ft_time();
         philo[i].nbr_philo = arg->nbr_philo;
         philo[i].stop = 0;
         philo[i].meals_allowed = 0;
@@ -65,10 +66,7 @@ void ft_init_threads(t_arg *arg, t_philosopher *philo)
 
     p_nbr = arg->nbr_philo;
     threads = malloc(sizeof(pthread_t) * p_nbr);
-    while(p_nbr--)
-        pthread_create(&threads[p_nbr], NULL, ft_philo_actions, (void *)&philo);
-    p_nbr = arg->nbr_philo;
-    while(p_nbr--)
-        pthread_join(threads[p_nbr], NULL);
+    pthread_create(&threads[p_nbr], NULL, ft_philo_actions, (void *)&philo);
+    pthread_join(threads[p_nbr], NULL);
     arg->all_thread = threads;
 }

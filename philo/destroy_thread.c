@@ -7,11 +7,13 @@ void	ft_finish_thread(t_arg *arg)
 	p_nbr = arg->nbr_philo;
 	if (p_nbr == 1)
 		pthread_mutex_unlock(&arg->fork[0]);
-	while (p_nbr)
+	while (p_nbr > 0)
 	{
-	    p_nbr--;
+		p_nbr--;
+		printf("4\n");
 		pthread_join(arg->all_thread[p_nbr], NULL);
 	}
+	printf("12\n");
 }
 
 /*

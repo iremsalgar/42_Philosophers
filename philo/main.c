@@ -27,6 +27,7 @@ int main(int ac, char **av)
         ft_init_philosophers(&arg);
         ft_init_threads(&arg, arg.all_philo);
         ft_finish_thread(&arg);
+        printf("finish_thread\n");
         ft_unlock_and_destroy_mutex(&arg);
 	    ft_free_all(&arg);
     }
