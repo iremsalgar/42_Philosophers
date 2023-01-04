@@ -114,7 +114,7 @@ int pthread_create(pthread_t *thread, const pthread_attr_t *attr,
 ```
 Bu fonksiyonun ilk parametresi, oluşturulacak thread için bir pthread_t tipinde değişken gerektirir. Bu değişken, oluşturulan threadin tanımlayıcısını tutar. İkinci parametre, threadin özelliklerini tanımlayan bir pthread_attr_t tipinde değişkendir ve genellikle NULL olarak ayarlanır. Üçüncü parametre, threadin çalıştıracağı işlevi tanımlayan bir fonksiyon göstericisidir. Dördüncü parametre ise, işlevin çalıştırılması sırasında kullanılacak verileri tutan bir değişkendir.
 
-pthread_create() fonksiyonu, thread oluşturulurken bir hata oluşursa 0 döndürür. Thread oluşturulurken bir hata olmazsa, fonksiyon 0 dışında bir değer döndürür. Bu değer, oluşturulan threadin tanımlayıcısıdır ve pthread_join() fonksiyonu ile threadin bekletilebilmesi için kullanılır.
+pthread_create() fonksiyonu, thread oluşturulurken bir hata olmazsa 0 döndürür. Thread oluşturulurken bir hata olursa, fonksiyon 0 dışında bir değer döndürür. Bu değer, oluşturulan threadin tanımlayıcısıdır ve pthread_join() fonksiyonu ile threadin bekletilebilmesi için kullanılır.
 
 ### pthread_join
 
